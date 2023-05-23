@@ -10,9 +10,12 @@ public class Main {
         User jane = new User("Jane", 456);
         User jon = new User("Jon", 789);
 
+//      Register users
+        System.out.println("REGISTER USERS TO LIBRARY");
         library.registerUser(lane);
         library.registerUser(jane);
         library.registerUser(jon);
+        System.out.println();
 
         Book book1 = new Book("Lord of the Flies", "William Golding", 1954, 224, "Fiction", 0.50);
         Book book2 = new Book("Animal Farm", "George Orwell", 1945, 140, "Fiction", 0.75);
@@ -24,6 +27,8 @@ public class Main {
         library.addBook(book3);
         library.addBook(book4);
 
+//      Find Methods
+        System.out.println("FIND OPERATIONS");
         library.findByAuthor("George Orwell").forEach(System.out::println);
         System.out.println();
 
@@ -42,6 +47,8 @@ public class Main {
         library.findByCategory("fiction").forEach(System.out::println);
         System.out.println();
 
+//      Loaning out and returning books
+        System.out.println("LOANING AND RETURNING BOOKS");
         library.loanOutBook(lane, book1);  // Loan out Book 1 to Lane
         library.loanOutBook(lane, book2);  // Loan out Book 2 to Lane
         library.loanOutBook(jane, book1);  // Trying to loan out Book 1 to Jane (already on loan to Lane)
@@ -51,13 +58,14 @@ public class Main {
         library.returnBook(jane, book1);
         System.out.println();
 
+//      Borrowing books, setting due dates
         jon.borrowBook(book1);
         jon.borrowBook(book2);
         jon.borrowBook(book3);
 
         LocalDate today = LocalDate.now();
         LocalDate dueDate1 = today.plusWeeks(2);
-        LocalDate dueDate2 = today.minusDays(2); // Overdue
+        LocalDate dueDate2 = today.minusDays(5); // Overdue
         LocalDate dueDate3 = today.plusDays(5);
         LocalDate dueDate4 = today.plusDays(1);
 
@@ -67,6 +75,7 @@ public class Main {
         book4.setDueDate(dueDate4);
 
         // Calculate late fees for the user
+        System.out.println("CALCULATE LATE FEES AND SHOW OVERDUE BOOKS");
         double lateFees = jon.calculateLateFees();
         System.out.println("Total late fees for " + jon.getName() + ": $" + lateFees);
 

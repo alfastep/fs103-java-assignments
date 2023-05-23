@@ -17,6 +17,7 @@ public class Library {
 
     public void registerUser(User user) {
         users.add(user);
+        System.out.println(user.getName() + " has been registered to the library.");
     }
     public void addBook(Book book) {
         books.add(book);
@@ -64,30 +65,30 @@ public class Library {
     }
 
     public void loanOutBook(User user, Book book) {
-        Predicate<Book> isAvailable = books::contains;
-        Predicate<Book> isOnLoanToUser = user::isBookOnLoan;
+        Predicate<Book> isAvailable = b -> books.contains(b) && !b.isOnLoan();
+        Predicate<Book> isOnLoanToAnyUser = Book::isOnLoan;
 
         if (!isAvailable.test(book)) {
-            System.out.println(book.getTitle() + " is not available in the library.");
-        } else if (isOnLoanToUser.test(book)) {
-            System.out.println(book.getTitle() + " is already on loan to " + user.getName() + ".");
+            System.out.println(book.getTitle() + " is not available in the library or is already on loan.");
+        } else if (isOnLoanToAnyUser.test(book)) {
+            System.out.println(book.getTitle() + " is already on loan.");
         } else {
+            book.setOnLoan(true);
             user.borrowBook(book);
             System.out.println(book.getTitle() + " has been loaned to " + user.getName() + ".");
         }
     }
 
     public void returnBook(User user, Book book) {
-        Predicate<Book> isAvailable = books::contains;
-        Predicate<Book> isOnLoanToUser = user::isBookOnLoan;
-
-        if (!isAvailable.test(book)) {
+        if (!books.contains(book)) {
             System.out.println(book.getTitle() + " is not available in the library.");
-        } else if (!isOnLoanToUser.test(book)) {
+        } else if (!user.getBooksOnLoan().contains(book)) {
             System.out.println(book.getTitle() + " is not on loan to " + user.getName() + ".");
         } else {
             user.returnBook(book);
+            book.setOnLoan(false); // Set the loan status to false
             System.out.println(book.getTitle() + " has been returned by " + user.getName() + ".");
         }
     }
+
 }
