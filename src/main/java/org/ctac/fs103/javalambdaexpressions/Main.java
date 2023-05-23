@@ -2,10 +2,7 @@ package org.ctac.fs103.javalambdaexpressions;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -71,7 +68,12 @@ public class Main {
 //      Consumer
         Consumer<Person> displayNames = person -> System.out.println(person.getName());
         people.forEach(displayNames);
+        System.out.println();
 
+//      Supplier
+        Supplier<Double> randomNumberSupplier = Math::random;
+        double randomNumber = randomNumberSupplier.get();
+        System.out.println(randomNumber);
 
     }
 }
