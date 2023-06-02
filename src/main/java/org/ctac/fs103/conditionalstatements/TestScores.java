@@ -10,17 +10,21 @@ public class TestScores {
 
         int num = Integer.parseInt(scanner.nextLine());
 
-        if (num >= 90) {
-            System.out.println("Your grade is an A :)");
-        } else if (num >= 80) {
-            System.out.println("Your grade is a B");
-        } else if (num >= 70) {
-            System.out.println("Your grade is a C");
-        } else if (num >= 60) {
-            System.out.println("Your grade is a D");
-        } else {
-            System.out.println("Your grade is an F :(");
-        }
+        System.out.println(grade(num));
 
+    }
+
+    public static String grade(int num) {
+        if (num >= 90) {
+            return "Your grade is an A :)";
+        } else if (num >= 80) {
+            return "Your grade is a B";
+        } else if (num >= 70) {
+            return "Your grade is a C";
+        } else if (num >= 60) {
+           return "Your grade is a D";
+        } else {
+            return "Your grade is an F :(";
+        }
     }
 }

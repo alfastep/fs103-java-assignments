@@ -8,9 +8,15 @@ public class BoilingWater {
 
         System.out.println("Enter a number greater than 212: ");
 
-        if (Integer.parseInt(scanner.nextLine()) >= 212) {
-            System.out.println("Water is boiling!");
+        boiling(Integer.parseInt(scanner.nextLine()));
+
+    }
+
+    public static String boiling(int a) {
+        if (a >= 212) {
+            return "Water is boiling!";
         }
 
+        return "Water is not boiling!";
     }
 }

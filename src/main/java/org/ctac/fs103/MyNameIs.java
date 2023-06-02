@@ -1,4 +1,4 @@
-package org.ctac.fs103.printingpractice;
+package org.ctac.fs103;
 
 public class MyNameIs {
     public static void main(String[] args) {
