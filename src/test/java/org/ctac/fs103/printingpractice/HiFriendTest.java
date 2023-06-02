@@ -1,6 +1,5 @@
 package org.ctac.fs103.printingpractice;
 
-import org.ctac.fs103.HiFriend;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

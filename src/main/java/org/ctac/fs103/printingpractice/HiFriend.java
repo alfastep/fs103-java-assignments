@@ -1,4 +1,4 @@
-package org.ctac.fs103;
+package org.ctac.fs103.printingpractice;
 
 public class HiFriend {
     public static void main(String[] args) {
